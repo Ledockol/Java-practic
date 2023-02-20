@@ -1,20 +1,28 @@
 package HomeWork4;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.ArrayDeque;
 public class Ex2 {
 
-    public static <Num> List<Num> reverseList(List<Num> list) {
-        List<Num> reverse = new ArrayList<>(list);
-        Collections.reverse(reverse);
-        return reverse;
+    public static ArrayDeque<Integer> getReversDeque(int count) {
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+        ArrayDeque<Integer> reverseDeque = new ArrayDeque<>();
+
+        for (int i = 0; i < count; i++) {
+            int rand = (int) (Math.random() * (10 - 1));
+            deque.addFirst(rand);
+        }
+        System.out.println(deque);
+
+        for (int i = 0; i < count; i++) {
+            reverseDeque.addFirst(deque.getFirst());
+            deque.removeFirst();
+        }
+        return reverseDeque;
     }
 
     public static void main(String[] args) {
-        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
-        System.out.println(list);
-        List<Integer> reverse = reverseList(list);
-        System.out.println(reverse);
+
+        System.out.println(getReversDeque(5));
+
     }
+
 }
